@@ -1,10 +1,9 @@
 # import the necessary packages
 import os
 # define the base path to the dataset
-# image path and annots path to the images directory and annotation CSV file resp
+# image path to the images directory
 BASE_PATH = "dataset"
 IMAGES_PATH = os.path.sep.join([BASE_PATH, "images"])
-ANNOTS_PATH = os.path.sep.join([BASE_PATH, "people.csv"])
 
 # define the path to the base output directory
 BASE_OUTPUT = "output"
@@ -14,9 +13,9 @@ MODEL_PATH = os.path.sep.join([BASE_OUTPUT, "detector.h5"])
 PLOT_PATH = os.path.sep.join([BASE_OUTPUT, "plot.png"])
 TEST_FILENAMES = os.path.sep.join([BASE_OUTPUT, "test_images.txt"])
 
-# initialize our initial learning rate, number of epochs to train
-# for, and the batch size
-INIT_LR = 1e-4
-NUM_EPOCHS = 25
-BATCH_SIZE = 32
+input_shape = (228, 228, 3)
+dropout_rate = 0.5
+classes = 3
+alpha = 0.2
+prediction_units = 4 + classes
 
