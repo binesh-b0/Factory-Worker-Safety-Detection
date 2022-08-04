@@ -1,0 +1,46 @@
+absl-py==1.2.0
+astunparse==1.6.3
+cachetools==5.2.0
+certifi @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_884c889c-96af-444f-bd6d-daddb5e9a462ykj3l5n_/croots/recipe/certifi_1655968814730/work/certifi
+charset-normalizer==2.1.0
+click==8.1.3
+Flask==2.1.3
+flatbuffers==1.12
+gast==0.4.0
+google-auth==2.9.1
+google-auth-oauthlib==0.4.6
+google-pasta==0.2.0
+grpcio @ file:///Users/ktietz/ci_310/grpcio_1643970354199/work
+h5py @ file:///Users/ktietz/ci_310/h5py_1644262287129/work
+idna==3.3
+itsdangerous==2.1.2
+Jinja2==3.1.2
+keras==2.9.0
+Keras-Preprocessing==1.1.2
+libclang==14.0.1
+Markdown==3.4.1
+MarkupSafe==2.1.1
+numpy @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_ba5c3eaa-be93-4f42-ae24-fa720a3c6627m_sp7nbj/croots/recipe/numpy_and_numpy_base_1652801688716/work
+oauthlib==3.2.0
+opencv-python==4.6.0.66
+opt-einsum==3.3.0
+packaging==21.3
+protobuf==3.19.4
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pyparsing==3.0.9
+requests==2.28.1
+requests-oauthlib==1.3.1
+rsa==4.9
+six==1.15.0
+tensorboard==2.9.1
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+tensorflow-estimator==2.9.0
+tensorflow-macos==2.9.2
+tensorflow-metal==0.5.0
+termcolor==1.1.0
+typing_extensions==4.3.0
+urllib3==1.26.11
+Werkzeug==2.2.1
+wrapt==1.14.1
