@@ -17,17 +17,8 @@ Height = 480
 
 net = cv2.dnn.readNet('yolov3.weights', 'yolov3.cfg')
 
-# cv2.startWindowThread()
-
 # open webcam video stream
 cap = cv2.VideoCapture(0)
-
-# the output will be written to output.avi
-# out_vid = cv2.VideoWriter(
-#     'output.avi',
-#     cv2.VideoWriter_fourcc(*'MJPG'),
-#     15.,
-#     (640, 480))
 
 
 def gen_frames():
