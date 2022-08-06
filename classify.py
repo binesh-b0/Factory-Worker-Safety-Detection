@@ -17,7 +17,7 @@ def predict_safety(img_arr, model):
     predictions = model.predict(img_arr)
     predicted_labels = np.argmax(predictions, axis=1)
     if predicted_labels[0] == 1:
-        return 'UNSAFE'
-    else:
         return 'SAFE'
+    else:
+        return 'UNSAFE'
 

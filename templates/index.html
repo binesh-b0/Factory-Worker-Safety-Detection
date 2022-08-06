@@ -1,20 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <meta charset="UTF-8">
     <title>Safety Detector</title>
+    <style>
+
+         #videoElement {
+             width: 640px;
+             height: 480px;
+             display: none;
+             background-color: #666;
+         }
+
+         #imageElement {
+             width: 640px;
+             height: 480px;
+             background-color: #666;
+         }
+
+         #canvasElement {
+             width: 640px;
+             height: 480px;
+             border: 1px solid blue;
+         }
+         #photo {
+             width: 640px;
+             height: 480px;
+             border: 1px solid black;
+         }
+
+        </style>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8  offset-lg-2">
-            <h3 class="mt-5">Live Streaming</h3>
-            <img src="{{ url_for('video_feed') }}" width="640px" height="640px">
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Factory Worker Safety Detection</a>
+  </div>
+        <form class="d-flex"  action="{{ url_for('index') }}"  method="post">
+        <button class="btn btn-outline-success ml-1" type="submit">
+            {% if detection == False %}
+	        <b>Start</b>
+            {% else %}
+	        <b>Stop</b>
+            {% endif %}
+        </button>
+      </form>
+</nav>
+
+        <div  class="position-relative" id="container">
+            <canvas  id="canvasElement" class="{{'invisible' if detection==true}} position-absolute top-0 start-0"></canvas>
+            <video autoplay="true" id="videoElement" class="{{'invisible' if detection==true}} position-absolute top-0 start-0"></video>
+            <img class="{{'d-none' if detection==false}} position-absolute top-0 start-0" src="{{ url_for('video_feed') }}"  width="640px" height="480px" style="visibility:{{ 'hidden' if detection == False }}">
+
         </div>
-    </div>
-    <form method="post" action="/">
-        <input type="submit" value="EXIT" name="actionExit"/>
-    </form>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js" ></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
