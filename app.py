@@ -1,16 +1,11 @@
-import numpy as np
 from sys import stdout
 import logging
 from mk import Prediction
 import cv2
 import os
-from tensorflow import keras
 from flask import Flask, render_template, Response, request, redirect, url_for, flash
 from flask_socketio import SocketIO, emit
 from cam import Camera
-from utils import base64_to_pil_image, pil_image_to_base64
-from PIL import Image
-from classify import get_prep_img, predict_safety
 
 app = Flask(__name__)
 app.logger.addHandler(logging.StreamHandler(stdout))
@@ -22,20 +17,12 @@ camera = Camera(Prediction())
 
 detection = False
 
+
 @socketio.on('input image', namespace='/test')
 def test_message(input):
     input = input.split(",")[1]
     camera.enqueue_input(input)
-    # image_data = input # Do your magical Image processing here!!
-    # #image_data = image_data.decode("utf-8")
-    # image_data = "data:image/jpeg;base64," + image_data
-    # print("OUTPUT " + image_data)
-    # emit('out-image-event', {'image_data': image_data}, namespace='/test')
-    # camera.enqueue_input(base64_to_pil_image(input))
 
-# @socketio.on('connect', namespace='/test')
-# def test_connect():
-#     app.logger.info("client connected")
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index/', methods=['GET', 'POST'])
@@ -51,18 +38,18 @@ def index():
     return render_template('index.html',detection=detection)
 
 
-
 def gen():
     """Video streaming generator function."""
     app.logger.info("starting to generate frames!")
     print("generating frames")
     while True:
-        frame = camera.get_frame() #pil_image_to_base64(camera.get_frame())
+        frame = camera.get_frame()
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         ret, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
 
 @app.route('/video_feed')
 def video_feed():
@@ -71,5 +58,4 @@ def video_feed():
 
 
 if __name__ == "__main__":
-    # port = int(os.environ.get("PORT", 5000))
     socketio.run(app, host='0.0.0.0', port=8080)

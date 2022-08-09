@@ -24,12 +24,8 @@ class Camera(object):
         # convert it to a pil image
         input_img = base64_to_pil_image(input_str)
 
-        ################## where the hard work is done ############
         # output_img is an PIL image
         output_img = self.makeup_artist.impose_prediction(input_img)
-
-        # output_str is a base64 string in ascii
-        # output_str = pil_image_to_base64(output_img)
 
         # convert eh base64 string in ascii to base64 string in _bytes_
         # self.to_output.append(binascii.a2b_base64(output_str))
