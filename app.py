@@ -21,7 +21,8 @@ detection = False
 @socketio.on('input image', namespace='/test')
 def test_message(input):
     input = input.split(",")[1]
-    camera.enqueue_input(input)
+    if detection==True:
+        camera.enqueue_input(input)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -31,6 +32,7 @@ def index():
     if request.method == "POST":
         try:
             detection = not detection
+            camera.cam_flush()
             return redirect(url_for('index'))
         except:
             flash("Invalid type for variable")

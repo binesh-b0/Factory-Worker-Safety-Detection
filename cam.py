@@ -44,3 +44,7 @@ class Camera(object):
         while not self.to_output:
             sleep(0.05)
         return self.to_output.pop(0)
+
+    def cam_flush(self):
+        self.to_process = []
+        self.to_output = []
