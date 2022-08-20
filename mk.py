@@ -13,6 +13,7 @@ class Prediction(object):
         self.model = tf.keras.models.load_model('classify_model')
 
     def impose_prediction(self, img):
+        print("PREDICTING")
         frame = np.array(img)
         # Convert RGB to BGR
         frame = frame[:, :, ::-1].copy()

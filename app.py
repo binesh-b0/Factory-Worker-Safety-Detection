@@ -11,8 +11,8 @@ app = Flask(__name__)
 app.logger.addHandler(logging.StreamHandler(stdout))
 app.config['SECRET_KEY'] = 'secret!'
 app.config['DEBUG'] = True
-app.config['PORT'] = int(os.environ.get("PORT", 8080))
-socketio = SocketIO(app,cors_allowed_origins=["https://factorysafety.azurewebsites.net","http://127.0.0.1:8080","http://10.0.0.182:8080","*"])
+app.config['PORT'] = int(os.environ.get("PORT", 8082))
+socketio = SocketIO(app,cors_allowed_origins=[ "https://flask-fire-zsob7rfega-ue.a.run.app" "http://127.0.0.1:8082","https://flask-fire-zsob7rfega-ue.a.run.app/index", "*"])
 camera = Camera(Prediction())
 
 detection = False
@@ -60,4 +60,4 @@ def video_feed():
 
 
 if __name__ == "__main__":
-    socketio.run(app, host='0.0.0.0', port=8080)
+    socketio.run(app, host='0.0.0.0', port=8082)

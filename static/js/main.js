@@ -4,7 +4,6 @@ $(document).ready(function(){
     let canvas = document.querySelector("#canvasElement");
     let ctx = canvas.getContext('2d');
     photo = document.getElementById('photo');
-    console.log("akjsdbakjsnd")
     var localMediaStream = null;
   
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
